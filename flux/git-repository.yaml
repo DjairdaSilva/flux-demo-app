@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: demo-app
+  namespace: flux-system
+spec:
+  interval: 30s
+  url: https://github.com/DjairdaSilva/flux-demo-app
+  ref:
+    branch: main
