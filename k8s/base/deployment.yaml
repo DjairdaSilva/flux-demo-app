@@ -20,11 +20,9 @@ spec:
         image: nginx:alpine
         ports:
         - containerPort: 80
-        env:
-        - name: APP_VERSION
-          value: "v1.0.0"
-        - name: APP_COLOR
-          value: "#16a34a"
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
         resources:
           requests:
             cpu: 50m
@@ -38,3 +36,7 @@ spec:
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 10
+      volumes:
+      - name: html
+        configMap:
+          name: demo-app-html

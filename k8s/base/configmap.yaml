@@ -1,0 +1,110 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-app-html
+  namespace: demo-app
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Latitude K8s Demo</title>
+      <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+          background: linear-gradient(135deg, #87CEEB 0%, #00BFFF 50%, #4FC3F7 100%);
+          color: white;
+          font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .container {
+          text-align: center;
+          padding: 40px;
+          background: rgba(255,255,255,0.15);
+          backdrop-filter: blur(10px);
+          border-radius: 20px;
+          border: 1px solid rgba(255,255,255,0.3);
+          max-width: 600px;
+          width: 90%;
+        }
+        .logo { font-size: 64px; margin-bottom: 16px; }
+        h1 { font-size: 2.5em; margin-bottom: 8px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        .version { 
+          display: inline-block;
+          background: rgba(255,255,255,0.25);
+          padding: 4px 16px;
+          border-radius: 20px;
+          font-size: 0.9em;
+          margin-bottom: 24px;
+        }
+        .stats {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+          margin: 24px 0;
+        }
+        .stat {
+          background: rgba(255,255,255,0.1);
+          padding: 16px;
+          border-radius: 12px;
+        }
+        .stat-value { font-size: 1.5em; font-weight: bold; }
+        .stat-label { font-size: 0.8em; opacity: 0.8; }
+        .badge {
+          display: inline-block;
+          background: rgba(255,255,255,0.2);
+          padding: 6px 14px;
+          border-radius: 8px;
+          margin: 4px;
+          font-size: 0.85em;
+        }
+        .footer { margin-top: 24px; opacity: 0.7; font-size: 0.85em; }
+        .pulse { animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="logo">☁️</div>
+        <h1>Latitude K8s</h1>
+        <div class="version">v3.0.0 — Deployed via Flux CD</div>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-value">RKE2</div>
+            <div class="stat-label">Kubernetes Distribution</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">v1.34.6</div>
+            <div class="stat-label">Kubernetes Version</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">Chicago</div>
+            <div class="stat-label">Location</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value pulse">Healthy</div>
+            <div class="stat-label">Cluster Status</div>
+          </div>
+        </div>
+        <div>
+          <span class="badge">Headlamp</span>
+          <span class="badge">SigNoz</span>
+          <span class="badge">Flux CD</span>
+          <span class="badge">Trivy</span>
+          <span class="badge">KEDA</span>
+          <span class="badge">Knative</span>
+          <span class="badge">KubeVirt</span>
+          <span class="badge">cert-manager</span>
+        </div>
+        <div class="footer">
+          Bare Metal &bull; AMD EPYC 4484PX &bull; 96GB DDR5 &bull; 10GbE<br>
+          Powered by Latitude.sh
+        </div>
+      </div>
+    </body>
+    </html>
